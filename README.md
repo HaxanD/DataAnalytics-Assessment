@@ -4,14 +4,14 @@
 **Approach**:  
 - I have to divide my solution into subqueries and solve them one at a time
 - I joined customer data with savings and investment accounts  
-- I also Filtered for funded accounts (`confirmed_amount > 0`)for savings_savingsaccount
+- I also Filtered for funded accounts (confirmed_amount>0)for savings_savingsaccount
 and (amount>0) for Plans_plan 
 - Counted distinct products per customer  
 - Calculated total deposits in currency (kobo/100)  
 
 **Challenges**:  
-- I Initially miscounted transactions due to missing `is_regular_savings` flag  
-- I Resolved this issue by using `confirmed_amount > 0` as proxy for active accounts  
+- I Initially miscounted transactions due to missing is_regular_savings flag  
+- I Resolved this issue by using confirmed_amount > 0 as proxy for active accounts  
 - data contains null rows I resolve this with colesce
 ---
 
@@ -37,7 +37,7 @@ and (amount>0) for Plans_plan
   (b) But activity in past 2 years (to exclude new accounts)   
 
 **Challenges**:  
-- Investment plans does not have transaction dates (used `last_charge_date`)  
+- Investment plans does not have transaction dates (used last_charge_date)  
 
 ---
 
@@ -50,7 +50,7 @@ and (amount>0) for Plans_plan
 
 **Challenges**:  
 - Kobo conversion required amount/100  
-- Division by zero for new customers (I used `NULLIF` to avoid running into error)  
+- Division by zero for new customers (I used NULLIF to avoid running into error)  
 
 ---
 
